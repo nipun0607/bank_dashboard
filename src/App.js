@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import FinancialData from './Component/FinancialData';
+import Data from './Component/Data';
 
 function App() {
+  const [financialData, setFinancialData] = useState({
+    homevalue:5000,
+    loanAmount: 10000,
+    loanTerm: 10,
+    interestRate: 5,
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Bank Dashboard</h1>
+      <FinancialData data={financialData} onDataUpdate={setFinancialData} />
+      <Data data={financialData} />
     </div>
   );
 }
